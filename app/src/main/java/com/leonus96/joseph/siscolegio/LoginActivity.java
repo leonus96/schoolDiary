@@ -103,12 +103,11 @@ public class LoginActivity extends AppCompatActivity {
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
         Intent intent = new Intent(this, AlumnosActivity.class);
-        startActivity(intent);
         finish();
     }
 
     public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Ingreso fallido", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
 
         _loginButton.setEnabled(true);
     }
@@ -127,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("Contraseña entre 4 y 10 caracteres alfanumericos");
+            _passwordText.setError("Contraseña dentre 4 y 10 caracteres alfanumericos");
             valid = false;
         } else {
             _passwordText.setError(null);
