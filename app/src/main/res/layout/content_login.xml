@@ -13,17 +13,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:src="@mipmap/logologin3"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="logo" />
+
+        </FrameLayout>
+
+
+    <!--Formulario-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_marginTop="24dp"
-            android:src="@mipmap/logologin2"
-            android:layout_gravity="center_horizontal"/>
-
 
         <!-- Email Label -->
         <android.support.design.widget.TextInputLayout
@@ -37,8 +49,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/inputEmail"
                 android:inputType="textEmailAddress"
-                android:hint="Email"
-                android:textColorHighlight="@color/colorPrimary"/>
+                android:hint="@string/email"/>
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
@@ -53,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/inputPassword"
                 android:inputType="textPassword"
-                android:hint="Contraseña"/>
+                android:hint="@string/contrase_a"/>
         </android.support.design.widget.TextInputLayout>
 
         <!-- Button Log-in -->
@@ -66,7 +77,7 @@
             android:padding="12dp"
             android:background="@color/colorPrimary"
             android:textColor="@color/colorBackgroud"
-            android:text="Ingresar"/>
+            android:text="@string/ingresar"/>
 
         <!-- Regitrar? -->
 
@@ -76,10 +87,13 @@
             android:id="@+id/linkSignup"
             android:layout_marginBottom="24dp"
             android:layout_marginTop="24dp"
-            android:text="¿No tienes una cuenta? Crea una."
+            android:text="@string/no_tienes_una_cuenta_crea_una"
             android:gravity="center"
             android:textSize="16sp"
             android:textColor="@color/colorPrimary"/>
+
+    </LinearLayout>
+
 
     </LinearLayout>
 </ScrollView>

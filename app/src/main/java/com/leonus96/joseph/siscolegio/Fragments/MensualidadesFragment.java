@@ -1,4 +1,4 @@
-package com.leonus96.joseph.siscolegio;
+package com.leonus96.joseph.siscolegio.Fragments;
 
 
 import android.os.Bundle;
@@ -7,14 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.leonus96.joseph.siscolegio.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Mensualidades extends Fragment {
+public class MensualidadesFragment extends Fragment {
 
 
-    public Mensualidades() {
+    public MensualidadesFragment() {
         // Required empty public constructor
     }
 

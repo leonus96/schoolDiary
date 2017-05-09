@@ -10,7 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.leonus96.joseph.siscolegio.AlumnosActivity"
-    tools:showIn="@layout/activity_alumnos">
+    tools:showIn="@layout/activity_alumnos"
+    android:background="@color/colorBackgroud">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,6 +19,11 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/User"/>
         <android.support.v7.widget.CardView
             android:id="@+id/card1"
             xmlns:card_view="http://schemas.android.com/apk/res-auto"

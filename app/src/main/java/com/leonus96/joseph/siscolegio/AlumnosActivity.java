@@ -6,12 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AlumnosActivity extends AppCompatActivity {
-
+    @BindView(R.id.User)  TextView _user;
     @BindView(R.id.card1) CardView _nino;
     @BindView(R.id.card2) CardView _nina;
 
@@ -45,6 +45,8 @@ public class AlumnosActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
 }

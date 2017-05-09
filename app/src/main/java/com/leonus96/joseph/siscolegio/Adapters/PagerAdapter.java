@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.leonus96.joseph.siscolegio.Fragments.AsistenciaFragment;
 import com.leonus96.joseph.siscolegio.Fragments.CalificacionesFragment;
 import com.leonus96.joseph.siscolegio.Fragments.CitacionesFragment;
+import com.leonus96.joseph.siscolegio.Fragments.MensualidadesFragment;
 
 /**
  * Created by joseph on 28/02/17.
@@ -30,7 +31,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter{
             case 1:
                 return new CalificacionesFragment();
             case 2:
-                return new CitacionesFragment();
+                return new MensualidadesFragment();
             default:
                 return null;
         }

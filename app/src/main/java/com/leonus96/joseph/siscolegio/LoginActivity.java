@@ -3,10 +3,7 @@ package com.leonus96.joseph.siscolegio;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
+
     @BindView(R.id.inputEmail) EditText _emailText;
     @BindView(R.id.inputPassword) EditText _passwordText;
     @BindView(R.id.btnLogin) Button _loginButton;
@@ -30,57 +28,22 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+
 
         ButterKnife.bind(this); //seteamos todos los controles
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login();
+                if(validate()){
+                    login();
+                }
             }
         });
 
-        _signupLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //A registro;
-            }
-        });
     }
 
-    private void login(){
-        Log.d(TAG, "Login");//consola
-        if(!validate()){
-            onLoginFailed();
-            return;
-        }
 
-        _loginButton.setEnabled(false);
-
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Ingresando...");
-        progressDialog.show();
-
-
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
-
-        // TODO: implementamos la lógica de autenticacion aqui.
-
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
-
-    }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_SIGNUP) {
@@ -100,33 +63,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    public void onLoginSuccess() {
-        _loginButton.setEnabled(true);
-        Intent intent = new Intent(this, AlumnosActivity.class);
-        finish();
-    }
-
-    public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
-        _loginButton.setEnabled(true);
-    }
-
-    public boolean validate() {
+    private boolean validate() {
         boolean valid = true;
 
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (email.isEmpty()) {
             _emailText.setError("Ingresa un e-mail valido");
             valid = false;
         } else {
             _emailText.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("Contraseña dentre 4 y 10 caracteres alfanumericos");
+        if (password.isEmpty() || password.length() < 4 || password.length() > 15) {
+            _passwordText.setError("Contraseña entre 4 y 15 caracteres alfanumericos");
             valid = false;
         } else {
             _passwordText.setError(null);
@@ -134,6 +85,50 @@ public class LoginActivity extends AppCompatActivity {
 
         return valid;
     }
+
+    private void login(){
+        if(!validate()){
+            onLoginFailed();
+            return;
+        }
+        _loginButton.setEnabled(false);
+
+        // Diálogo de progreso:
+        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this, R.style.Theme_AppCompat_DayNight_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Espere unos momentos...");
+        progressDialog.show();
+
+        String dni = _emailText.getText().toString();
+        String constraseña = _passwordText.getText().toString();
+
+        //TODO: implementar aqui logica de autenticación!
+
+        new android.os.Handler().postDelayed( //funcionse ejecuta despues de 3000ms
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        onLoginSuccess();
+                        progressDialog.dismiss();
+                    }
+                }, 3000
+        );
+    }
+
+    public void onLoginSuccess(){
+        _loginButton.setEnabled(true);
+        Intent intent = new Intent(getApplicationContext(), AlumnosActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onLoginFailed(){
+        Toast.makeText(getBaseContext(), "No se pudo ingresar", Toast.LENGTH_LONG).show();
+
+        _loginButton.setEnabled(true);
+    }
+
+
 
 
 }

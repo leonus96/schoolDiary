@@ -1,13 +1,31 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context="com.leonus96.joseph.siscolegio.Fragments.AsistenciaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Asistencia" />
+        android:padding="20dp">
 
-</FrameLayout>
+        <com.stacktips.view.CustomCalendarView
+            android:id="@+id/calendar_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            app:calendarBackgroundColor="#fff"
+            app:calendarTitleTextColor="@color/colorPrimary"
+            app:dayOfMonthTextColor="@color/black"
+            app:dayOfWeekTextColor="@color/black"
+            app:titleLayoutBackgroundColor="@color/white"
+            app:weekLayoutBackgroundColor="@color/white">
+        </com.stacktips.view.CustomCalendarView>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

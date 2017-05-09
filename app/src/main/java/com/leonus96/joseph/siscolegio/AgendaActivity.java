@@ -1,14 +1,11 @@
 package com.leonus96.joseph.siscolegio;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,12 +20,20 @@ public class AgendaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Bundle bundle = getIntent().getExtras();
+        int id = bundle.getInt("id");
+        if(id == 1){
+            toolbar.setTitle("José Alberto Alfaro López");
+        }else{
+            toolbar.setTitle("Génesis Michelle Alfaro López");
+        }
+
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
         _tabLayout.addTab(_tabLayout.newTab().setText("Asistencias"));
         _tabLayout.addTab(_tabLayout.newTab().setText("Calificaciones"));
-        _tabLayout.addTab(_tabLayout.newTab().setText("Citaciones"));
+        _tabLayout.addTab(_tabLayout.newTab().setText("Pagos"));
         _tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
 
