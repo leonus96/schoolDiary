@@ -10,7 +10,7 @@
     <string name="section_format">Hello World from section: %1$d</string>
 
     <!-- Login  -->
-    <string name="email">Email</string>
+    <string name="email">DNI</string>
     <string name="contrase_a">Contraseña</string>
     <string name="ingresar">Ingresar</string>
     <string name="no_tienes_una_cuenta_crea_una">¿No tienes una cuenta? Contáctanos.</string>
